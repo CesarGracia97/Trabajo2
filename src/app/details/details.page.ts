@@ -56,8 +56,6 @@ export class DetailsPage implements OnInit {
 
   saveTask(task: Task) {
     this.isLoading = true;
-  
-    // Solo actualizamos si se están editando los campos
     const updatedTask = {
       ID: task.ID,
       NAME: task.NAME,

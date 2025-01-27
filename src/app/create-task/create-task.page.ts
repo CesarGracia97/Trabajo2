@@ -39,9 +39,7 @@ export class CreateTaskPage implements OnInit {
 
   onSubmit() {
     if (this.taskName && this.taskDetails) {
-      this.loading = true; // Inicia la carga
-
-      // Llamada al servicio para enviar la tarea
+      this.loading = true; 
       this.intermediateService.sendTask(this.taskName, this.taskDetails).subscribe({
         next: (response) => {
           this.loading = false; // Finaliza la carga
