@@ -12,7 +12,7 @@ import { Task } from 'src/app/interface/task.interface';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, IonButton, IonContent, CommonModule, FormsModule, IonLoading, IonToast, IonItem, IonLabel, IonRadio ]
+  imports: [ReactiveFormsModule, IonButton, IonContent, CommonModule, FormsModule, IonLoading, IonToast ]
 })
 export class DetailsPage implements OnInit {
   tasks: Task[] = [];
