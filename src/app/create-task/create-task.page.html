@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="header_content">
+    <h1>Crear Tareas</h1>
+  </div>
+
+  <div class="body_content">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="taskName">Nombre de la Tarea</label>
+        <input type="text" id="taskName" [(ngModel)]="taskName" name="taskName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="taskDetails">Detalles de la Tarea</label>
+        <textarea id="taskDetails" [(ngModel)]="taskDetails" name="taskDetails" required></textarea>
+      </div>
+
+      <ion-button type="submit" expand="full" [disabled]="loading">
+        <ion-icon slot="start" name="cloud-upload"></ion-icon>
+        Cargar Tarea
+      </ion-button>
+    </form>
+  </div>
+
+  <ion-toast 
+    [isOpen]="toast.isOpen" 
+    [message]="toast.message" 
+    [duration]="toast.duration" 
+    [position]="toast.position" 
+    [color]="toast.color"
+    (didDismiss)="onToastDismiss()">
+  </ion-toast>
+
+  <ion-loading [isOpen]="loading" message="Cargando..." />
+  
+  <div class="footer_content">
+    <button class="btn" (click)="irPagina('home')">Regresar a Lista de Tareas</button>
+  </div>
+</ion-content>

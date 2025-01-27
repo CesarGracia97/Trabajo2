@@ -1,0 +1,80 @@
+/* Contenedor de búsqueda */
+.search-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+ion-input {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+ion-input::part(input) {
+  padding: 0.8rem;
+}
+
+/* Estilos para la tabla */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+th, td {
+  padding: 0.8rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+td button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Estilos cuando no hay tareas */
+.no-tasks {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #f3f4f6;
+}
+
+.footer_content .btn {
+  background-color: #3b82f6;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer_content .btn:hover {
+  background-color: #2563eb;
+}

@@ -1,0 +1,85 @@
+<ion-content [fullscreen]="true">
+  <div class="header_content">
+    <h1>Detalles de Tareas</h1>
+  </div>
+
+  <div class="body_content">
+    <div class="search-container">
+      <input type="text" placeholder="Buscar tarea por nombre" [(ngModel)]="searchTerm" (input)="filterTasks()" />
+    </div>
+
+    <table *ngIf="filteredTasks.length > 0" class="task-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Detalles</th>
+          <th>Estado</th>
+          <th>Fecha Creación</th>
+          <th>Fecha Fin</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of filteredTasks">
+          <td>{{ task.ID }}</td>
+          <td>
+            <ng-container *ngIf="!task.isEditing; else editName">
+              {{ task.NAME }}
+            </ng-container>
+            <ng-template #editName>
+              <input [(ngModel)]="task.NAME" placeholder="Editar nombre" />
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="!task.isEditing; else editDetails">
+              {{ task.DETAILS }}
+            </ng-container>
+            <ng-template #editDetails>
+              <input [(ngModel)]="task.DETAILS" placeholder="Editar detalles" />
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="!task.isEditing; else editState">
+              {{ task.STATE === 'V' ? 'PENDIENTE' : 'FINALIZADO' }}
+            </ng-container>
+            <ng-template #editState>
+              <div>
+                <label>
+                  <input type="radio" name="state{{task.ID}}" [(ngModel)]="task.STATE" value="V" /> Pendiente
+                </label>
+                <label>
+                  <input type="radio" name="state{{task.ID}}" [(ngModel)]="task.STATE" value="F" /> Finalizado
+                </label>
+              </div>
+            </ng-template>
+          </td>
+          <td>{{ task.DCREATION | date }}</td>
+          <td>{{ task.DEnd | date }}</td>
+          <td>
+            <ion-button color="primary" (click)="toggleEdit(task)">Editar</ion-button>
+            <ion-button color="secondary" (click)="saveTask(task)">Guardar</ion-button>
+            <ion-button color="danger" (click)="deleteTask(task.ID)">Eliminar</ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="filteredTasks.length === 0" class="no-tasks">
+      No se encontraron tareas.
+    </div>
+  </div>
+
+  <ion-loading [isOpen]="isLoading" message="Guardando cambios..."></ion-loading>
+
+  <ion-toast 
+    [isOpen]="toastMessage !== ''" 
+    [message]="toastMessage" 
+    [duration]="2000" 
+    position="bottom">
+  </ion-toast>
+
+  <div class="footer_content">
+    <button class="btn" (click)="irPagina('home')">Regresar</button>
+  </div>
+</ion-content>
